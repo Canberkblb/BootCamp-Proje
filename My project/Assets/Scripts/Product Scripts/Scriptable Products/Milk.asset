@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productName: Milk
   price: 10
-  prefab: {fileID: 0}
-  boxPrefab: {fileID: 0}
+  prefab: {fileID: 1554623668074735820, guid: 2715fd8aecd18254dae7a5ffa90b9438, type: 3}
+  boxPrefab: {fileID: 3764821082888075400, guid: 67db550cbdbceb2458839499f8e1e2f9, type: 3}
   icon: {fileID: 0}
   description: Milk
   licenseKeyword: drinks
