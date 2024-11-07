@@ -21,6 +21,28 @@ public class Box : MonoBehaviour
         playerMovement = FindFirstObjectByType<PlayerMovement>();
     }
 
+    public void InitializeProducts(List<ProductSO> products)
+    {
+        containedProducts = products;
+        if (productPositions.Length < containedProducts.Count)
+        {
+            Debug.LogWarning("Not enough positions for all products");
+            return;
+        }
+
+        for (int i = 0; i < containedProducts.Count; i++)
+        {
+            GameObject spawnedProduct = Instantiate(containedProducts[i].prefab, productPositions[i].position, productPositions[i].rotation, productPositions[i]);
+            spawnedProduct.GetComponent<Rigidbody>().isKinematic = true;
+            spawnedProduct.GetComponent<Rigidbody>().detectCollisions = false;
+        }
+    }
+
+    public void SetProductType(ProductSO product)
+    {
+        productReference = product;
+    }
+
     private void Update()
     {
         if (isOpening)
