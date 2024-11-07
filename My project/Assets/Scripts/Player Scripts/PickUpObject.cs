@@ -27,6 +27,11 @@ public class PickUpObject : MonoBehaviour
                 DropObject();
             }
         }
+        if (Input.GetKeyDown(KeyCode.C) && heldObject != null && heldObject.CompareTag("Box"))
+        {
+            Debug.Log("Anim triggered");
+            heldObject.GetComponent<Box>().ToggleBox();
+        }
     }
 
     private void TryPickUpObject()
@@ -50,6 +55,6 @@ public class PickUpObject : MonoBehaviour
     {
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
         heldObject.transform.SetParent(null);
-        heldObject = null; 
+        heldObject = null;
     }
 }
