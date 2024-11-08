@@ -19,4 +19,4 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: Milk
   licenseKeyword: drinks
-  maxCountOnShelf: 0
+  maxCountOnShelf: 4

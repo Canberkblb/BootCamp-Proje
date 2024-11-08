@@ -6,6 +6,7 @@ public class PickUpObject : MonoBehaviour
     public float pickUpRange = 5f;
     public LayerMask pickUpLayer;
     public float maxTiltAngle = 45f;
+    public float shelfPlaceRange = 10f;
 
 
     private GameObject heldObject;
@@ -19,6 +20,15 @@ public class PickUpObject : MonoBehaviour
             {
                 TryPickUpObject();
             }
+            else
+            {
+                TryPlaceOnShelf();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && heldObject != null && heldObject.CompareTag("Box"))
+        {
+            TryTakeItemFromShelf();
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -31,7 +41,6 @@ public class PickUpObject : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C) && heldObject != null && heldObject.CompareTag("Box"))
         {
-            Debug.Log("Anim triggered");
             heldObject.GetComponent<Box>().ToggleBox();
         }
 
@@ -53,7 +62,45 @@ public class PickUpObject : MonoBehaviour
                 heldObject.transform.position = holdPosition.position;
                 heldObject.transform.SetParent(holdPosition);
                 heldObject.transform.localRotation = Quaternion.Euler(0, 90, 0);
-                heldObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                heldObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // Ölçeði 0.5 olarak ayarla
+            }
+            else if (hit.transform.CompareTag("priceTag"))
+            {
+                hit.transform.parent.GetComponent<PriceTag>().SetVisiblePriceTag();
+            }
+        }
+    }
+
+    private void TryPlaceOnShelf()
+    {
+        RaycastHit hit;
+        int layerMask = ~LayerMask.GetMask("pickUpLayer"); //Box Layerý
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shelfPlaceRange, layerMask))
+        {
+            if (hit.transform.CompareTag("Shelf"))
+            {
+                ShelfScript shelfTest = hit.transform.GetComponent<ShelfScript>();
+                if (shelfTest != null)
+                {
+                    heldObject.GetComponent<Box>().PlaceProductsOnShelf(shelfTest);
+                }
+            }
+        }
+    }
+
+    private void TryTakeItemFromShelf()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shelfPlaceRange))
+        {
+            if (hit.transform.CompareTag("Shelf"))
+            {
+                ShelfScript shelfTest = hit.transform.GetComponent<ShelfScript>();
+                if (shelfTest != null)
+                {
+                    heldObject.GetComponent<Box>().TakeItemFromShelf(shelfTest);
+                }
             }
         }
     }

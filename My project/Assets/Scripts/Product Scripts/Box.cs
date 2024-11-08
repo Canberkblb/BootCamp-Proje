@@ -11,6 +11,7 @@ public class Box : MonoBehaviour
 
     private ProductSO productReference;
 
+    private ShelfScript targetShelfTest;
     private bool isOpening = false;
     private bool isClosing = false;
     private bool isOpened = false;
@@ -38,6 +39,34 @@ public class Box : MonoBehaviour
         }
     }
 
+    public void PlaceProductsOnShelf(ShelfScript shelfTest)
+    {
+        if (isOpening || isClosing || !isOpened) return;
+
+        targetShelfTest = shelfTest;
+        PutProductsOnShelfTest();
+    }
+
+    public bool TakeItemFromShelf(ShelfScript shelfTest)
+    {
+        if (isOpening || isClosing || !isOpened) return false;
+
+        targetShelfTest = shelfTest;
+        bool itemTaken = targetShelfTest.TakeItem(productReference);
+        if (itemTaken)
+        {
+            containedProducts.Add(productReference);
+            int index = containedProducts.Count - 1;
+            if (index < productPositions.Length)
+            {
+                GameObject spawnedProduct = Instantiate(containedProducts[index].prefab, productPositions[index].position, productPositions[index].rotation, productPositions[index]);
+                spawnedProduct.GetComponent<Rigidbody>().isKinematic = true;
+                spawnedProduct.GetComponent<Rigidbody>().detectCollisions = false;
+            }
+        }
+        return itemTaken;
+    }
+
     public void SetProductType(ProductSO product)
     {
         productReference = product;
@@ -61,6 +90,24 @@ public class Box : MonoBehaviour
             {
                 isClosing = false;
                 isOpened = false;
+            }
+        }
+    }
+
+    private void PutProductsOnShelfTest()
+    {
+        if (containedProducts.Count > 0)
+        {
+            int index = containedProducts.Count - 1;
+            ProductSO product = containedProducts[index];
+            bool isPlaced = targetShelfTest.PutItem(product.prefab);
+            if (isPlaced)
+            {
+                containedProducts.RemoveAt(index);
+                foreach (Transform child in productPositions[index])
+                {
+                    Destroy(child.gameObject);
+                }
             }
         }
     }

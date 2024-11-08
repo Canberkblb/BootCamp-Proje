@@ -19,4 +19,4 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: Juice
   licenseKeyword: drinks
-  maxCountOnShelf: 0
+  maxCountOnShelf: 8
