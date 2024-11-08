@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.6
+  m_fontSize: 31.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1875,7 +1875,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 249487002134998916}
+      - m_Target: {fileID: 7373407143942439797}
         m_TargetAssemblyTypeName: UIFunctions, Assembly-CSharp
         m_MethodName: openMenu
         m_Mode: 3
@@ -2477,7 +2477,7 @@ GameObject:
   - component: {fileID: 734237920429202405}
   - component: {fileID: 7869582523917789239}
   - component: {fileID: 6505705496558637809}
-  - component: {fileID: 6638459409815918967}
+  - component: {fileID: 358493518245255934}
   m_Layer: 5
   m_Name: MoneyText
   m_TagString: Untagged
@@ -2603,7 +2603,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6638459409815918967
+--- !u!114 &358493518245255934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2612,7 +2612,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4348588943318589445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d945e39bb881d344ca7efcdba7921618, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ea650eb7a0f28d4bae30ff3c5aa8fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4501312262817055301
@@ -3142,7 +3142,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 249487002134998916}
+      - m_Target: {fileID: 7373407143942439797}
         m_TargetAssemblyTypeName: UIFunctions, Assembly-CSharp
         m_MethodName: returnDesktop
         m_Mode: 1
@@ -3275,7 +3275,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 249487002134998916}
+      - m_Target: {fileID: 7373407143942439797}
         m_TargetAssemblyTypeName: UIFunctions, Assembly-CSharp
         m_MethodName: returnDesktop
         m_Mode: 1
@@ -3423,7 +3423,7 @@ GameObject:
   - component: {fileID: 8822544918699454642}
   - component: {fileID: 5394019740506863167}
   - component: {fileID: 1585140560883067228}
-  - component: {fileID: 249487002134998916}
+  - component: {fileID: 7373407143942439797}
   m_Layer: 5
   m_Name: Canvas UI
   m_TagString: Untagged
@@ -3516,7 +3516,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &249487002134998916
+--- !u!114 &7373407143942439797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3525,7 +3525,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6212723269179467748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 497b0c3f08d39ae4c8e07864010e183d, type: 3}
+  m_Script: {fileID: 11500000, guid: e4aa80dd05b91bc45ad5a9df2f4a8db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   desktopMenus:
@@ -3533,10 +3533,10 @@ MonoBehaviour:
   - {fileID: 4035361508431293910}
   - {fileID: 1419709113250474977}
   supplyMenuPrefab: {fileID: 8122912798834282583}
-  productPrefab: {fileID: 7351193493051315754, guid: 7ddad3ebb58e9684097b17a1d889de17, type: 3}
-  itemWrapperPrefab: {fileID: 6180771292511398449, guid: 23fd9d7caff5060408db312264372708, type: 3}
+  productPrefab: {fileID: 7351193493051315754, guid: cda34cf1ff8b7514bb40e4645adcb830, type: 3}
+  itemWrapperPrefab: {fileID: 6180771292511398449, guid: 5adddfa2be7003c4f8b2c0c51d75c351, type: 3}
   licenseWrapperPrefab: {fileID: 913170079784940858}
-  licensePrefab: {fileID: 4866290357000232928, guid: a416fdd951cb3b24caad60d93b4656ff, type: 3}
+  licensePrefab: {fileID: 4866290357000232928, guid: 67a447ee292527545a7898b1c6b975f4, type: 3}
 --- !u!1 &6299606051029744255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3759,7 +3759,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 249487002134998916}
+      - m_Target: {fileID: 7373407143942439797}
         m_TargetAssemblyTypeName: UIFunctions, Assembly-CSharp
         m_MethodName: returnDesktop
         m_Mode: 1
@@ -4402,7 +4402,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LICENCE
+  m_text: LICENSE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4989,7 +4989,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 249487002134998916}
+      - m_Target: {fileID: 7373407143942439797}
         m_TargetAssemblyTypeName: UIFunctions, Assembly-CSharp
         m_MethodName: openMenu
         m_Mode: 3

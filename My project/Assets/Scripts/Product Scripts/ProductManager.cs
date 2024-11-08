@@ -60,7 +60,7 @@ public class ProductManager : MonoBehaviour
             Box boxComponent = box.GetComponent<Box>();
             boxComponent.GetComponent<Rigidbody>().isKinematic = true;
             List<ProductSO> productsToInitialize = new List<ProductSO>();
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 12; i++)
             {
                 productsToInitialize.Add(product);
             }

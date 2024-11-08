@@ -68,6 +68,7 @@ public class UIFunctions : MonoBehaviour
             else
             {
                 Debug.LogError("LicenseWrapper bileşeni bulunamadı.");
+
             }
         }
     }
@@ -84,13 +85,13 @@ public class UIFunctions : MonoBehaviour
 
     private void HandleProductPurchased(ProductSO product)
     {
-        //Debug.Log($"{product.productName} satın alındı");
+        Debug.Log($"{product.productName} satın alındı");
         // UI'ı güncelle, ses çal, vb.
     }
 
     private void HandlePurchaseFailed(string reason)
     {
-        //Debug.Log($"Satın alma başarısız: {reason}");
+        Debug.Log($"Satın alma başarısız: {reason}");
         // UI'da hata mesajını göster
     }
 
