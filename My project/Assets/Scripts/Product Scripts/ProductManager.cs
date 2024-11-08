@@ -11,7 +11,7 @@ public class ProductManager : MonoBehaviour
 
     [SerializeField] private List<LicenseSO> ownedLicenses = new List<LicenseSO>();
 
-    //public GameObject priceTagPrefab;
+    public GameObject priceTagPrefab;
     public event Action<ProductSO> OnProductPurchased;
     public event Action<ProductSO> OnProductSpawned;
     public event Action<string> OnPurchaseFailed;
@@ -183,5 +183,52 @@ public class ProductManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    //Fiyatlandýrma 
+
+    [SerializeField] private ShelfScript priceTagShelf;
+    public GameObject GetPriceTagPrefab()
+    {
+        return priceTagPrefab;
+    }
+
+    public void SetVisiblePriceTag(ShelfScript shelf = null, int originalPrice = 0)
+    {
+        if (shelf != null)
+        {
+            priceTagShelf = shelf;
+
+        }
+
+        priceTagPrefab.SetActive(!priceTagPrefab.activeSelf);
+
+        priceTagPrefab.GetComponent<PriceTagUI>().SetPriceTagShelf(originalPrice);
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            PlayerMovement fpsMovement = player.GetComponent<PlayerMovement>();
+            if (fpsMovement != null)
+            {
+                fpsMovement.canMove = !priceTagPrefab.activeSelf;
+            }
+        }
+
+        if (priceTagPrefab.activeSelf)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void SetPriceTagShelf(int price)
+    {
+        priceTagShelf.SetPriceForItemZone(price);
     }
 }

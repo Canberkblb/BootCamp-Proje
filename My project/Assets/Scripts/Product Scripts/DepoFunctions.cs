@@ -7,7 +7,7 @@ public class DepoFunctions : MonoBehaviour
     public GameObject itemSpawnPoint;
     public GameObject gameUIPrefab;
     private GameObject gameUIInstance;
-    private void Awake()
+    private void Start()
     {
         depoCanvasInstance = Instantiate(depoCanvasPrefab);
         UIFunctions uiFunctions = depoCanvasInstance.GetComponent<UIFunctions>();
@@ -16,36 +16,40 @@ public class DepoFunctions : MonoBehaviour
 
         gameUIInstance = Instantiate(gameUIPrefab);
         gameUIInstance.SetActive(true);
-
+        Debug.Log(ProductManager.Instance);
+        ProductManager.Instance.priceTagPrefab = gameUIInstance.transform.Find("PriceTagUI").gameObject;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            bool depoAktif = !depoCanvasInstance.activeSelf;
-            if (depoAktif)
+            if (!ProductManager.Instance.priceTagPrefab.activeSelf)
             {
-                UIFunctions uiFunctions = depoCanvasInstance.GetComponent<UIFunctions>();
-                uiFunctions.returnDesktop();
+                bool depoAktif = !depoCanvasInstance.activeSelf;
+
+                if (depoAktif)
+                {
+                    UIFunctions uiFunctions = depoCanvasInstance.GetComponent<UIFunctions>();
+                    uiFunctions.returnDesktop();
+                }
+
+                depoCanvasInstance.SetActive(depoAktif);
+
+                gameUIInstance.SetActive(!depoAktif);
+
+
+                if (depoAktif)
+                {
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else
+                {
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
             }
-
-            depoCanvasInstance.SetActive(depoAktif);
-
-            gameUIInstance.SetActive(!depoAktif);
-
-            if (depoAktif)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-
-            }
-
         }
     }
 }
